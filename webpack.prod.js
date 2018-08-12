@@ -47,7 +47,7 @@ module.exports = {
     ]
   },
   entry: {
-    app: `./app/app.js`
+    app: `./app/index.js`
   },
   mode: 'production',
   output: {

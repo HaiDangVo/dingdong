@@ -1,6 +1,6 @@
 {
   "name": "dingdongjs",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "a super fast + light weight game engine",
   "main": "dist/index.js",
   "scripts": {

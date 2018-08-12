@@ -51,7 +51,7 @@ module.exports = {
     ]
   },
   entry: {
-    app: `./app/app.js`
+    app: `./app/index.js`
   },
   output: {
     path: path.resolve(__dirname, '.tmp'),
