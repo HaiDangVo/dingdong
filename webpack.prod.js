@@ -1,8 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
 const FailPlugin = require('webpack-fail-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   module: {
@@ -18,21 +16,19 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loaders: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                importLoaders: true,
-                modules: false,
-                minimize: true
-              }
-            },
-            'sass-loader'
-          ]
-        })
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: true,
+              modules: false,
+              minimize: false
+            }
+          },
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
@@ -53,17 +49,16 @@ module.exports = {
   entry: {
     app: `./app/app.js`
   },
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
   },
-  plugins:[
+  plugins: [
     FailPlugin,
-    new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       env: 'prod',
       template: 'app/index.html'
-    }),
-    new ExtractTextPlugin('[name].css')
+    })
   ]
 }
