@@ -1,5 +1,4 @@
-module.exports = class {
-    constructor() {
-        console.log('hello');
-    }
-}
+import Subscribe from './core/subscribe';
+
+//
+module.exports = Subscribe;
